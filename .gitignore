@@ -1,0 +1,6 @@
+.vscode/
+*.zip
+*.crx
+logs
+*.log
+*_.*

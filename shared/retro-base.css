@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --rt-bg: #0D0D00;
+  --rt-amber: #FFB000;
+  --rt-amber-dim: #996800;
+  --rt-amber-glow: #FFD000;
+  --rt-black: #000000;
+  --rt-scanline: rgba(0, 0, 0, 0.15);
+}
+
+body {
+  background-color: var(--rt-bg) !important;
+  color: var(--rt-amber) !important;
+  font-family: 'VT323', monospace !important;
+}
+
+.rt-scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--rt-scanline) 0px,
+    var(--rt-scanline) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.4;
+}
+
+@keyframes rt-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.rt-cursor::after {
+  content: '\u25AE';
+  animation: rt-blink 1s step-end infinite;
+  color: var(--rt-amber);
+}
+
+.rt-glow {
+  text-shadow: 0 0 8px var(--rt-amber), 0 0 16px var(--rt-amber-dim);
+}

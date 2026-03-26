@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "RetroTerm",
+  "version": "1.0.0",
+  "description": "Transforms GitHub, Hack Club, and Carnival into amber CRT terminal experiences.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "css": ["shared/retro-base.css", "content/github/github.css"],
+      "js": ["shared/boot.js", "content/github/github.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://hackclub.com/*"],
+      "css": ["shared/retro-base.css", "content/hackclub/hackclub.css"],
+      "js": ["shared/boot.js", "content/hackclub/hackclub.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://carnival.hackclub.com/*"],
+      "css": ["shared/retro-base.css", "content/carnival/carnival.css"],
+      "js": ["shared/boot.js", "content/carnival/carnival.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
