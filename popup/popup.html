@@ -9,8 +9,66 @@
 </head>
 <body>
   <div class="popup-container">
-    <h1 class="popup-title">RETROTERM</h1>
-    <p class="popup-status">▮ SYSTEM ONLINE</p>
+    <div class="popup-header">
+      <h1 class="popup-title">RETROTERM</h1>
+      <p class="popup-version">v2.6 AMBER BUILD</p>
+    </div>
+
+    <div class="popup-divider"></div>
+
+    <div class="toggle-row master-row">
+      <span class="toggle-label">▮ MASTER POWER</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-master" checked>
+        <span class="toggle-track">
+          <span class="toggle-knob"></span>
+        </span>
+      </label>
+    </div>
+
+    <div class="popup-divider dim"></div>
+
+    <div class="sites-section">
+      <p class="section-label">SITE OVERRIDES</p>
+
+      <div class="toggle-row">
+        <span class="toggle-label">GITHUB</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-github" checked>
+          <span class="toggle-track">
+            <span class="toggle-knob"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">HACKCLUB</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-hackclub" checked>
+          <span class="toggle-track">
+            <span class="toggle-knob"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">CARNIVAL</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-carnival" checked>
+          <span class="toggle-track">
+            <span class="toggle-knob"></span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="popup-divider"></div>
+
+    <div class="popup-footer">
+      <p class="popup-status" id="status-text">▮ ALL SYSTEMS ONLINE</p>
+    </div>
   </div>
+
+  <script src="popup.js"></script>
 </body>
 </html>
