@@ -15,21 +15,29 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
-      "css": ["shared/retro-base.css", "content/github/github.css"],
       "js": ["shared/boot.js", "content/github/github.js"],
       "run_at": "document_end"
     },
     {
       "matches": ["https://hackclub.com/*"],
-      "css": ["shared/retro-base.css", "content/hackclub/hackclub.css"],
       "js": ["shared/boot.js", "content/hackclub/hackclub.js"],
       "run_at": "document_end"
     },
     {
       "matches": ["https://carnival.hackclub.com/*"],
-      "css": ["shared/retro-base.css", "content/carnival/carnival.css"],
       "js": ["shared/boot.js", "content/carnival/carnival.js"],
       "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "shared/retro-base.css",
+        "content/github/github.css",
+        "content/hackclub/hackclub.css",
+        "content/carnival/carnival.css"
+      ],
+      "matches": ["https://github.com/*", "https://hackclub.com/*", "https://carnival.hackclub.com/*"]
     }
   ]
 }

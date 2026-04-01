@@ -91,3 +91,36 @@ function runBootScreen(siteName, lines) {
 
   typeLine(0);
 }
+
+function injectCSS(path) {
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = chrome.runtime.getURL(path);
+  link.setAttribute('data-retroterm', '');
+  document.head.appendChild(link);
+}
+
+function checkRetroEnabled(siteKey, cssPaths, callback) {
+  var DEFAULTS = { master: true, github: true, hackclub: true, carnival: true };
+
+  chrome.storage.sync.get('retroterm', function(result) {
+    var state = result.retroterm || DEFAULTS;
+
+    if (!state.master || !state[siteKey]) {
+      return;
+    }
+
+    for (var i = 0; i < cssPaths.length; i++) {
+      injectCSS(cssPaths[i]);
+    }
+
+    callback();
+  });
+
+  chrome.storage.onChanged.addListener(function(changes) {
+    if (changes.retroterm) {
+      location.reload();
+    }
+  });
+}
+
