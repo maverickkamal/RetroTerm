@@ -22,15 +22,14 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
   background: repeating-linear-gradient(
     to bottom,
-    var(--rt-scanline) 0px,
-    var(--rt-scanline) 1px,
-    transparent 1px,
-    transparent 4px
+    rgba(0, 0, 0, 0.5) 0px,
+    rgba(0, 0, 0, 0.5) 2px,
+    transparent 2px,
+    transparent 5px
   );
-  opacity: 0.4;
 }
 
 @keyframes rt-blink {

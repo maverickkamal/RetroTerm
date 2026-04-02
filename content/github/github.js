@@ -15,6 +15,7 @@
       if (document.querySelector('.rt-scanlines')) return;
       var el = document.createElement('div');
       el.className = 'rt-scanlines';
+      el.style.opacity = '0.4';
       document.body.appendChild(el);
     }
 
@@ -28,9 +29,28 @@
       h1.insertBefore(span, h1.firstChild);
     }
 
+    function ensureCSSLinks() {
+      var needed = ['shared/retro-base.css', 'content/github/github.css'];
+      for (var i = 0; i < needed.length; i++) {
+        var url = chrome.runtime.getURL(needed[i]);
+        if (!document.querySelector('link[href="' + url + '"]')) {
+          injectCSS(needed[i]);
+        }
+      }
+    }
+
+    function patchImages() {
+      var imgs = document.querySelectorAll('img:not([data-rt-filtered])');
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].setAttribute('data-rt-filtered', '1');
+      }
+    }
+
     function patchPage() {
       injectScanlines();
       injectTitleCursor();
+      ensureCSSLinks();
+      patchImages();
     }
 
     document.addEventListener('focusin', function(e) {
@@ -49,5 +69,37 @@
 
     document.addEventListener('turbo:load', patchPage);
     document.addEventListener('turbo:render', patchPage);
+    document.addEventListener('turbo:before-render', function(e) {
+      if (e.detail && e.detail.newBody) {
+        var el = document.createElement('div');
+        el.className = 'rt-scanlines';
+        e.detail.newBody.appendChild(el);
+      }
+    });
+
+    window.addEventListener('popstate', function() {
+      setTimeout(patchPage, 100);
+    });
+
+    var observer = new MutationObserver(function(mutations) {
+      var needsPatch = false;
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].addedNodes.length > 0) {
+          needsPatch = true;
+          break;
+        }
+      }
+      if (needsPatch) {
+        injectScanlines();
+        injectTitleCursor();
+        patchImages();
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    setTimeout(function() {
+      observer.disconnect();
+    }, 15000);
   });
 })();
