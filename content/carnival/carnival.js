@@ -15,7 +15,7 @@
       if (document.querySelector('.rt-scanlines')) return;
       var el = document.createElement('div');
       el.className = 'rt-scanlines';
-      el.style.opacity = '0.1';
+      el.style.opacity = String(window.__rtScanline || 0.1);
       document.body.appendChild(el);
 
       if (!document.querySelector('.rt-vignette')) {

@@ -101,7 +101,7 @@ function injectCSS(path) {
 }
 
 function checkRetroEnabled(siteKey, cssPaths, callback) {
-  var DEFAULTS = { master: true, github: true, hackclub: true, carnival: true };
+  var DEFAULTS = { master: true, github: true, hackclub: true, carnival: true, amberOpacity: 80, scanlineIntensity: 40 };
 
   chrome.storage.sync.get('retroterm', function(result) {
     var state = result.retroterm || DEFAULTS;
@@ -110,9 +110,14 @@ function checkRetroEnabled(siteKey, cssPaths, callback) {
       return;
     }
 
+    window.__rtAmber = (state.amberOpacity !== undefined ? state.amberOpacity : 80) / 100;
+    window.__rtScanline = (state.scanlineIntensity !== undefined ? state.scanlineIntensity : 40) / 100;
+
     for (var i = 0; i < cssPaths.length; i++) {
       injectCSS(cssPaths[i]);
     }
+
+    document.documentElement.style.setProperty('--rt-user-opacity', window.__rtAmber);
 
     callback();
   });

@@ -147,6 +147,54 @@ input:checked + .toggle-track .toggle-knob {
   opacity: 0.3;
   pointer-events: none;
 }
+.slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 4px;
+}
+
+.slider-label {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: #996800;
+  letter-spacing: 1px;
+}
+
+.slider-label span {
+  color: #FFB000;
+}
+
+.rt-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #1A1100;
+  border: 1px solid #332200;
+  outline: none;
+  cursor: pointer;
+}
+
+.rt-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #FFD000;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px #FFB000, 0 0 12px rgba(255, 176, 0, 0.4);
+}
+
+.rt-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #FFD000;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px #FFB000;
+}
 
 .popup-footer {
   text-align: center;
