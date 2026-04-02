@@ -17,6 +17,14 @@
       el.className = 'rt-scanlines';
       el.style.opacity = '0.4';
       document.body.appendChild(el);
+
+      if (!document.querySelector('.rt-vignette')) {
+        var vig = document.createElement('div');
+        vig.className = 'rt-vignette';
+        document.body.appendChild(vig);
+      }
+
+      document.body.classList.add('rt-flicker');
     }
 
     function injectTitleCursor() {
