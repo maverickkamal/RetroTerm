@@ -771,6 +771,22 @@ footer a:hover {
   background: #FFB000;
 }
 
+img,
+video,
+canvas,
+.avatar,
+.avatar-user,
+.gravatar,
+.emoji,
+.social-count img,
+.octicon {
+  filter: sepia(1) hue-rotate(5deg) saturate(3) brightness(0.7) !important;
+}
+
+svg:not(.rt-scanlines) {
+  filter: sepia(1) hue-rotate(5deg) saturate(3) brightness(0.8) !important;
+}
+
 ::selection {
   background-color: rgba(255, 176, 0, 0.3) !important;
   color: #FFD000 !important;

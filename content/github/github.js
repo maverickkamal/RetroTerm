@@ -40,8 +40,9 @@
     }
 
     function patchImages() {
-      var imgs = document.querySelectorAll('img:not([data-rt-filtered])');
+      var imgs = document.querySelectorAll('img:not([data-rt-filtered]), video:not([data-rt-filtered])');
       for (var i = 0; i < imgs.length; i++) {
+        imgs[i].style.setProperty('filter', 'sepia(1) hue-rotate(5deg) saturate(3) brightness(0.7)', 'important');
         imgs[i].setAttribute('data-rt-filtered', '1');
       }
     }
@@ -100,6 +101,6 @@
 
     setTimeout(function() {
       observer.disconnect();
-    }, 15000);
+    }, 30000);
   });
 })();
