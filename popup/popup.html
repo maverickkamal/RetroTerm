@@ -17,7 +17,7 @@
     <div class="popup-divider"></div>
 
     <div class="toggle-row master-row">
-      <span class="toggle-label">▮ MASTER POWER</span>
+      <span class="toggle-label">MASTER POWER</span>
       <label class="toggle-switch">
         <input type="checkbox" id="toggle-master" checked>
         <span class="toggle-track">
@@ -67,6 +67,12 @@
     <div class="sites-section">
       <p class="section-label">INTENSITY CONTROLS</p>
 
+      <div class="tab-bar">
+        <button class="tab-btn active" data-site="github">GH</button>
+        <button class="tab-btn" data-site="hackclub">HC</button>
+        <button class="tab-btn" data-site="carnival">CV</button>
+      </div>
+
       <div class="slider-row">
         <span class="slider-label">AMBER <span id="amber-val">80</span>%</span>
         <input type="range" id="slider-amber" min="30" max="100" value="80" class="rt-slider">
@@ -76,12 +82,27 @@
         <span class="slider-label">SCANLINE <span id="scanline-val">40</span>%</span>
         <input type="range" id="slider-scanline" min="0" max="80" value="40" class="rt-slider">
       </div>
+
+      <div class="slider-row">
+        <span class="slider-label">VIGNETTE <span id="vignette-val">70</span>%</span>
+        <input type="range" id="slider-vignette" min="0" max="100" value="70" class="rt-slider">
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label small">FLICKER</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-flicker" checked>
+          <span class="toggle-track">
+            <span class="toggle-knob"></span>
+          </span>
+        </label>
+      </div>
     </div>
 
     <div class="popup-divider"></div>
 
     <div class="popup-footer">
-      <p class="popup-status" id="status-text">▮ ALL SYSTEMS ONLINE</p>
+      <p class="popup-status" id="status-text">ALL SYSTEMS ONLINE</p>
     </div>
   </div>
 

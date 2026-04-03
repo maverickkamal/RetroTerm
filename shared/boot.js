@@ -101,17 +101,26 @@ function injectCSS(path) {
 }
 
 function checkRetroEnabled(siteKey, cssPaths, callback) {
-  var DEFAULTS = { master: true, github: true, hackclub: true, carnival: true, amberOpacity: 80, scanlineIntensity: 40 };
+  var SITE_DEFAULTS = {
+    github: { amber: 80, scanline: 40, vignette: 70, flicker: true },
+    hackclub: { amber: 85, scanline: 30, vignette: 70, flicker: true },
+    carnival: { amber: 55, scanline: 10, vignette: 70, flicker: true }
+  };
 
   chrome.storage.sync.get('retroterm', function(result) {
-    var state = result.retroterm || DEFAULTS;
+    var state = result.retroterm || {};
+    var master = state.master !== undefined ? state.master : true;
+    var siteEnabled = state[siteKey] !== undefined ? state[siteKey] : true;
+    var settings = state.siteSettings && state.siteSettings[siteKey] ? state.siteSettings[siteKey] : SITE_DEFAULTS[siteKey];
 
-    if (!state.master || !state[siteKey]) {
+    if (!master || !siteEnabled) {
       return;
     }
 
-    window.__rtAmber = (state.amberOpacity !== undefined ? state.amberOpacity : 80) / 100;
-    window.__rtScanline = (state.scanlineIntensity !== undefined ? state.scanlineIntensity : 40) / 100;
+    window.__rtAmber = settings.amber / 100;
+    window.__rtScanline = settings.scanline / 100;
+    window.__rtVignette = settings.vignette / 100;
+    window.__rtFlicker = settings.flicker !== false;
 
     for (var i = 0; i < cssPaths.length; i++) {
       injectCSS(cssPaths[i]);

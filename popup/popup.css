@@ -8,7 +8,7 @@ body {
 }
 
 .popup-container {
-  padding: 20px 16px;
+  padding: 16px 14px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -39,21 +39,21 @@ body {
 .popup-divider {
   height: 1px;
   background: #996800;
-  margin: 12px 0;
+  margin: 10px 0;
   box-shadow: 0 0 4px rgba(255, 176, 0, 0.3);
 }
 
 .popup-divider.dim {
   background: #332200;
   box-shadow: none;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 
 .section-label {
   font-family: 'VT323', monospace;
   font-size: 13px;
   color: #996800;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   letter-spacing: 2px;
 }
 
@@ -61,7 +61,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 4px;
+  padding: 5px 4px;
   border: 1px solid transparent;
   transition: border-color 0.15s;
 }
@@ -71,7 +71,7 @@ body {
 }
 
 .master-row {
-  padding: 8px 4px;
+  padding: 6px 4px;
 }
 
 .master-row .toggle-label {
@@ -85,6 +85,11 @@ body {
   font-size: 18px;
   color: #FFB000;
   letter-spacing: 1px;
+}
+
+.toggle-label.small {
+  font-size: 15px;
+  color: #996800;
 }
 
 .toggle-switch {
@@ -147,11 +152,43 @@ input:checked + .toggle-track .toggle-knob {
   opacity: 0.3;
   pointer-events: none;
 }
+
+.tab-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 8px;
+}
+
+.tab-btn {
+  flex: 1;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: #996800;
+  background: #0D0D00;
+  border: 1px solid #332200;
+  padding: 6px 0;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  letter-spacing: 1px;
+}
+
+.tab-btn:hover {
+  color: #FFB000;
+  border-color: #996800;
+}
+
+.tab-btn.active {
+  color: #FFD000;
+  background: #1A1100;
+  border-color: #FFB000;
+  text-shadow: 0 0 6px rgba(255, 208, 0, 0.3);
+}
+
 .slider-row {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 4px 4px;
+  gap: 3px;
+  padding: 3px 4px;
 }
 
 .slider-label {

@@ -21,10 +21,15 @@
       if (!document.querySelector('.rt-vignette')) {
         var vig = document.createElement('div');
         vig.className = 'rt-vignette';
+        vig.style.opacity = String(window.__rtVignette !== undefined ? window.__rtVignette : 0.7);
         document.body.appendChild(vig);
       }
 
-      document.body.classList.add('rt-flicker');
+      if (window.__rtFlicker !== false) {
+        document.body.classList.add('rt-flicker');
+      } else {
+        document.body.classList.remove('rt-flicker');
+      }
     }
 
     function injectTitleCursor() {
